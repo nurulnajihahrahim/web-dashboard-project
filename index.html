@@ -1,20 +1,28 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Dashboard Website</title>
+  <meta charset="UTF-8" />
+  <title>My Dashboard Home</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 font-sans p-6">
+<body class="bg-gray-100 p-6 font-sans">
   <div class="max-w-xl mx-auto bg-white p-6 rounded shadow">
-    <h1 class="text-3xl font-bold text-blue-600">Hi, I'm Nurul Najihah Rahim.</h1>
-    <p class="mt-2">I'm a final-year Computer Science student who built this dashboard for real-time data insights.</p>
+    <h1 class="text-3xl font-bold text-purple-600">Hi, I'm Nurul Najihah Rahim</h1>
+    <p class="mt-2">Welcome to my live data dashboards!</p>
     <img src="assets/profile.jpg" class="w-32 mt-4 rounded-full" alt="Profile">
 
-    <div class="mt-6 flex space-x-4">
-      <a href="dashboard1.html" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Weather Dashboard</a>
-      <a href="dashboard2.html" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Crypto Dashboard</a>
+    <div class="mt-6 flex flex-col gap-3">
+      <a href="dashboard1.html" class="bg-blue-500 text-white px-4 py-2 rounded text-center">Movie Dashboard</a>
+      <a href="dashboard2.html" class="bg-green-500 text-white px-4 py-2 rounded text-center">Country Dashboard</a>
     </div>
+    <div id="greeting" class="text-xl font-semibold mt-6"></div>
+    <div id="lastUpdated" class="text-sm text-gray-600 mt-2"></div>
   </div>
+
+  <script>
+    const hour = new Date().getHours();
+    const greeting = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
+    document.getElementById('greeting').innerText = `${greeting}, welcome to my dashboard site!`;
+    document.getElementById('lastUpdated').innerText = `Last updated: ${new Date().toLocaleString()}`;
+  </script>
 </body>
 </html>

@@ -1,19 +1,33 @@
-async function getCrypto() {
-  const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd');
+async function getCountries() {
+  const res = await fetch('https://restcountries.com/v3.1/all');
   const data = await res.json();
-  const prices = [data.bitcoin.usd, data.ethereum.usd];
+  const region = document.getElementById('regionFilter').value;
+  const filtered = region === 'all' ? data : data.filter(c => c.region === region);
 
-  new Chart(document.getElementById('cryptoChart'), {
+  const sorted = filtered.sort((a, b) => b.population - a.population).slice(0, 5);
+  const labels = sorted.map(c => c.name.common);
+  const populations = sorted.map(c => c.population);
+
+  const ctx = document.getElementById('countryChart').getContext('2d');
+  if (window.countryChart instanceof Chart) {
+    window.countryChart.destroy();
+  }
+  window.countryChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Bitcoin', 'Ethereum'],
+      labels,
       datasets: [{
-        label: 'Price (USD)',
-        data: prices,
-        backgroundColor: ['#f7931a', '#3c3c3d']
+        label: `Population`,
+        data: populations,
+        backgroundColor: 'rgba(16, 185, 129, 0.7)'
       }]
+    },
+    options: {
+      scales: {
+        y: { beginAtZero: true }
+      }
     }
   });
 }
 
-getCrypto();
+getCountries();
