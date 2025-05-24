@@ -2,16 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Movie Ratings Dashboard</title>
+  <title>Movie Ratings - Najihah R.</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-100 p-6 font-sans">
+<body class="bg-gray-100 p-6 font-poppins">
   <div class="max-w-3xl mx-auto bg-white p-6 rounded shadow">
     <h1 class="text-2xl font-bold text-center mb-6">🎜️ Top 5 Movies</h1>
     <input id="search" placeholder="Search movies..." class="border px-2 py-1 mr-2" />
     <button onclick="getMovies()" class="bg-blue-600 text-white px-4 py-2 rounded">Search</button>
     <canvas id="movieChart" class="mt-6"></canvas>
+    <a href="index.html" class="text-blue-600 hover:underline block mb-4">← Back to Home</a>
   </div>
   <script src="js/dashboard1.js"></script>
 </body>

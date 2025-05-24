@@ -1,21 +1,63 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>My Dashboard Home</title>
+  <title>Home - Najihah R.</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif']
+          },
+          colors: {
+            beige: '#f5f5dc',
+            beigeDark: '#e0e0b8',
+            beigeLight: '#fdfdf2'
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-100 p-6 font-sans">
-  <div class="max-w-xl mx-auto bg-white p-6 rounded shadow">
-    <h1 class="text-3xl font-bold text-purple-600">Hi, I'm Nurul Najihah Rahim</h1>
-    <p class="mt-2">Welcome to my live data dashboards!</p>
-    <img src="assets/profile.jpg" class="w-32 mt-4 rounded-full" alt="Profile">
+<body class="bg-beigeLight font-poppins">
+  <div class="min-h-screen flex flex-col items-center justify-center px-4">
+    <div class="w-full max-w-2xl bg-white p-8 rounded shadow text-center">
+      <h1 class="text-3xl font-bold text-purple-600">Hi, I'm Nurul Najihah Rahim</h1>
+      <p class="mt-2">Welcome to my live data dashboards!</p>
+      <img src="assets/profile.jpg" class="w-32 mt-4 rounded-full mx-auto" alt="Profile">
 
-    <div class="mt-6 flex flex-col gap-3">
-      <a href="dashboard1.html" class="bg-blue-500 text-white px-4 py-2 rounded text-center">Movie Dashboard</a>
-      <a href="dashboard2.html" class="bg-green-500 text-white px-4 py-2 rounded text-center">Country Dashboard</a>
+      <div class="mt-6 flex flex-col gap-4">
+        <a href="movie-dashboard.html" class="bg-beigeDark text-black px-4 py-2 rounded hover:bg-beige">Movie Dashboard</a>
+        <a href="f1-dashboard.html" class="bg-beigeDark text-black px-4 py-2 rounded hover:bg-beige">F1 Dashboard</a>
+      </div>
+
+      <div class="mt-10 text-left space-y-4">
+        <section>
+          <h2 class="text-xl font-semibold text-purple-600">About Me</h2>
+          <p class="mt-1">I'm passionate about data, design, and delivering user-friendly web solutions.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-purple-600">My Interests</h2>
+          <ul class="list-disc list-inside mt-1">
+            <li>🎬 I love watching movies — especially thrillers and sci-fi!</li>
+            <li>✈️ Travelling is my escape — exploring cultures and food is my thing.</li>
+            <li>🏎️ I'm a huge F1 fan — I follow every race and support my favorite drivers.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-purple-600">This Project</h2>
+          <p class="mt-1">This web dashboard was built using Tailwind CSS, Chart.js, and public APIs to show live movie and Formula 1 data. It is deployed via GitHub Pages with full CI/CD workflow.</p>
+        </section>
+      </div>
+
+      <div id="greeting" class="text-lg font-semibold mt-10"></div>
+      <div id="lastUpdated" class="text-sm text-gray-600 mt-1"></div>
     </div>
-    <div id="greeting" class="text-xl font-semibold mt-6"></div>
-    <div id="lastUpdated" class="text-sm text-gray-600 mt-2"></div>
   </div>
 
   <script>
