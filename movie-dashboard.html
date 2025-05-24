@@ -10,6 +10,12 @@
         extend: {
           fontFamily: {
             poppins: ['Poppins', 'sans-serif']
+          },
+          colors: {
+            beige: '#f5f5dc',
+            beigeDark: '#e0e0b8',
+            beigeLight: '#fdfdf2',
+            maroon: '#800000'
           }
         }
       }
@@ -18,14 +24,32 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-100 p-6 font-poppins">
+<body class="bg-beigeLight p-6 font-poppins">
   <div class="max-w-3xl mx-auto bg-white p-6 rounded shadow">
-    <h1 class="text-2xl font-bold text-center mb-6">🎜️ Top 5 Movies</h1>
-    <input id="search" placeholder="Search movies..." class="border px-2 py-1 mr-2" />
-    <button onclick="getMovies()" class="bg-blue-600 text-white px-4 py-2 rounded">Search</button>
-    <canvas id="movieChart" class="mt-6"></canvas>
-    <a href="index.html" class="text-blue-600 hover:underline block mb-4">← Back to Home</a>
+    <h1 class="text-2xl font-bold text-maroon text-center mb-6">🎜️ Top 5 Movies</h1>
+
+    <div class="mb-4 flex flex-wrap gap-2 justify-center">
+      <input id="search" placeholder="Search movies..." class="border px-4 py-2 rounded" />
+      <button onclick="getMovies()" class="bg-beigeDark text-white px-4 py-2 rounded hover:bg-beige">Search</button>
+    </div>
+
+    <!-- Loading spinner -->
+    <div id="loading" class="hidden text-center my-4">
+      <svg class="animate-spin h-8 w-8 text-maroon-600 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+      </svg>
+      <p class="text-sm text-gray-500 mt-2">Loading...</p>
+    </div>
+
+    <div class="bg-beige p-4 rounded-lg shadow-inner">
+      <canvas id="movieChart"></canvas>
+    </div>
+
+    <div id="posters" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mt-6"></div>
+
+    <a href="index.html" class="text-blue-600 hover:underline block mt-6 text-center">← Back to Home</a>
   </div>
-  <script src="js/dashboard1.js"></script>
-</body>
-</html>
+    <script src="js/movie-dashboard.js"></script>
+  </body>
+  </html>

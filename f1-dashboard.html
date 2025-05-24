@@ -2,36 +2,56 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>F1 Dashboard</title>
+  <title>F1 Dashboard - Najihah R.</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif']
+          },
+          colors: {
+            beige: '#f5f5dc',
+            beigeDark: '#e0e0b8',
+            beigeLight: '#fdfdf2',
+            maroon: '#800000'
+          }
+        }
+      }
+    }
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="bg-beigeLight font-poppins p-6">
   <div class="max-w-5xl mx-auto bg-white p-6 rounded shadow">
-    <h1 class="text-2xl font-bold text-red-600 text-center mb-6">🏎️ F1 2025 Dashboard</h1>
+    <h1 class="text-2xl font-bold text-maroon text-center mb-6">🏎️ F1 2025 Dashboard</h1>
 
     <div class="mb-4">
       <a href="index.html" class="text-blue-600 hover:underline">← Back to Home</a>
-      <input id="searchInput" placeholder="Search driver..." class="border px-4 py-2 w-full rounded" oninput="searchDriver()">
+      <input id="searchInput" placeholder="Search driver..." class="border px-4 py-2 w-full rounded mt-2" oninput="searchDriver()">
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <!-- Chart Section -->
       <div>
-        <h2 class="text-xl font-semibold mb-2">Top 5 Drivers by Points</h2>
-        <canvas id="f1Chart"></canvas>
+        <h2 class="text-xl font-semibold text-maroon mb-2">Top 5 Drivers by Points</h2>
+        <div class="bg-beige p-4 rounded-lg shadow-inner">
+          <canvas id="f1Chart"></canvas>
+        </div>
       </div>
 
       <!-- Driver Photos -->
       <div>
-        <h2 class="text-xl font-semibold mb-2">Top Drivers</h2>
+        <h2 class="text-xl font-semibold text-maroon mb-2">Top Drivers</h2>
         <div id="driverPhotos" class="grid grid-cols-2 gap-4"></div>
       </div>
     </div>
 
     <!-- Race Schedule Table -->
     <div class="mt-10">
-      <h2 class="text-xl font-semibold mb-2">Race Schedule</h2>
+      <h2 class="text-xl font-semibold text-maroon mb-2">Race Schedule</h2>
       <table class="w-full text-left border-collapse">
         <thead>
           <tr class="bg-gray-200">
@@ -47,6 +67,5 @@
   </div>
 
   <script src="js/f1-dashboard.js"></script>
-
 </body>
 </html>

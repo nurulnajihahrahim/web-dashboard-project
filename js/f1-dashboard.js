@@ -20,7 +20,7 @@
           datasets: [{
             label: 'Championship Points',
             data: points,
-            backgroundColor: '#e10600'
+            backgroundColor: '#800000'
           }]
         },
         options: { scales: { y: { beginAtZero: true } } }
