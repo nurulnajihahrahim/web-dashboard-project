@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Movie Ratings - Najihah R.</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -24,13 +25,13 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-beigeLight p-6 font-poppins">
-  <div class="max-w-3xl mx-auto bg-white p-6 rounded shadow">
-    <h1 class="text-2xl font-bold text-maroon text-center mb-6">🎜️ Top 5 Movies</h1>
+<body class="bg-beigeLight pt-12 pb-10 px-4 sm:px-6 font-poppins">
+  <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded shadow">
+    <h1 class="text-2xl sm:text-3xl font-bold text-maroon text-center mb-6">🎜️ Top 5 Movies</h1>
 
-    <div class="mb-4 flex flex-wrap gap-2 justify-center">
-      <input id="search" placeholder="Search movies..." class="border px-4 py-2 rounded" />
-      <button onclick="getMovies()" class="bg-beigeDark text-white px-4 py-2 rounded hover:bg-beige">Search</button>
+    <div class="mb-4 flex flex-col sm:flex-row gap-2 justify-center items-center">
+      <input id="search" placeholder="Search movies..." class="border px-3 py-2 rounded w-full sm:w-auto" />
+      <button onclick="getMovies()" aria-label="Search movies by title" class="bg-beigeDark text-maroon px-4 py-2 rounded hover:bg-beige transition-transform hover:scale-105">Search</button>
     </div>
 
     <!-- Loading spinner -->
@@ -42,14 +43,18 @@
       <p class="text-sm text-gray-500 mt-2">Loading...</p>
     </div>
 
-    <div class="bg-beige p-4 rounded-lg shadow-inner">
-      <canvas id="movieChart"></canvas>
+    <div class="bg-beige p-4 rounded-lg shadow-inner w-full">
+      <div class="relative h-[300px] sm:h-[400px] md:h-[500px]">
+        <canvas id="movieChart" class="absolute top-0 left-0 w-full h-full"></canvas>
+      </div>
     </div>
+
+
 
     <div id="posters" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mt-6"></div>
 
-    <a href="index.html" class="text-blue-600 hover:underline block mt-6 text-center">← Back to Home</a>
+    <a href="index.html" class="text-maroon hover:underline block mt-6 text-center">← Back to Home</a>
   </div>
-    <script src="js/movie-dashboard.js"></script>
-  </body>
-  </html>
+  <script src="js/movie-dashboard.js"></script>
+</body>
+</html>

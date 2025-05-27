@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home - Najihah R.</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -15,7 +16,7 @@
             beige: '#f5f5dc',
             beigeDark: '#e0e0b8',
             beigeLight: '#fdfdf2',
-            maroon: '#800000',
+            maroon: '#800000'
           }
         }
       }
@@ -23,42 +24,58 @@
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-beigeLight font-poppins">
-  <div class="min-h-screen flex flex-col items-center justify-center px-4">
-    <div class="w-full max-w-2xl bg-white p-8 rounded shadow text-center">
-      <h1 class="text-3xl font-bold text-maroon">Hi, I'm Nurul Najihah Rahim</h1>
-      <p class="mt-2">Welcome to my live data dashboards!</p>
-      <img src="assets/profile.JPG" class="w-32 mt-4 rounded-full mx-auto" alt="Profile">
+<body class="bg-beigeLight font-poppins pt-12 pb-10 px-4 sm:px-6">
+  <div class="w-full max-w-2xl mx-auto bg-white p-6 sm:p-8 rounded shadow text-center">
+    <h1 class="text-2xl sm:text-3xl font-bold text-maroon">Hi, I'm Nurul Najihah Rahim</h1>
+    <p class="mt-2">Welcome to my live data dashboards!</p>
+    <img src="assets/profile.JPG" class="w-32 mt-4 rounded-full mx-auto" alt="Profile picture of Najihah Rahim">
 
-      <div class="mt-6 flex flex-col gap-4">
-        <a href="movie-dashboard.html" class="bg-beigeDark text-black px-4 py-2 rounded hover:bg-beige">Movie Dashboard</a>
-        <a href="f1-dashboard.html" class="bg-beigeDark text-black px-4 py-2 rounded hover:bg-beige">F1 Dashboard</a>
-      </div>
-
-      <div class="mt-10 text-left space-y-4">
-        <section>
-          <h2 class="text-xl font-semibold text-maroon">About Me</h2>
-          <p class="mt-1">I'm passionate about data, design, and delivering user-friendly web solutions.</p>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-maroon">My Interests</h2>
-          <ul class="list-disc list-inside mt-1">
-            <li>🎬 I love watching movies — especially thrillers and sci-fi!</li>
-            <li>✈️ Travelling is my escape — exploring cultures and food is my thing.</li>
-            <li>🏎️ I'm a huge F1 fan — I follow every race and support my favorite drivers.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-maroon">This Project</h2>
-          <p class="mt-1">This web dashboard was built using Tailwind CSS, Chart.js, and public APIs to show live movie and Formula 1 data. It is deployed via GitHub Pages with full CI/CD workflow.</p>
-        </section>
-      </div>
-
-      <div id="greeting" class="text-lg font-semibold mt-10"></div>
-      <div id="lastUpdated" class="text-sm text-gray-600 mt-1"></div>
+    <div class="mt-6 flex flex-col gap-4">
+      <a href="movie-dashboard.html" class="bg-beigeDark text-black px-4 py-2 rounded hover:bg-beige transition-transform hover:scale-105">Movie Dashboard</a>
+      <a href="f1-dashboard.html" class="bg-beigeDark text-black px-4 py-2 rounded hover:bg-beige transition-transform hover:scale-105">F1 Dashboard</a>
     </div>
+
+    <div class="mt-10 text-left space-y-4">
+      <section>
+        <h2 class="text-xl font-semibold text-maroon">About Me</h2>
+        <p class="mt-1">I'm passionate about data, design, and delivering user-friendly web solutions.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-maroon">My Interests</h2>
+        <div id="interest-carousel" class="relative overflow-hidden mt-4 h-40 rounded shadow bg-beigeDark">
+          <div id="carousel-inner" class="flex transition-transform duration-700 ease-in-out h-full w-full">
+            <!-- Card 1 -->
+            <div class="min-w-full flex items-center justify-center h-full">
+              <div class="text-black text-center">
+                🎬 <strong>Movies</strong><br />I love watching thrillers and sci-fi!
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="min-w-full flex items-center justify-center h-full">
+              <div class="text-black text-center">
+                ✈️ <strong>Travelling</strong><br />Exploring new cultures and food is my escape.
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="min-w-full flex items-center justify-center h-full">
+              <div class="text-black text-center">
+                🏎️ <strong>Formula 1</strong><br />I follow every race and support my favorite drivers.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section>
+        <h2 class="text-xl font-semibold text-maroon">This Project</h2>
+        <p class="mt-1">This web dashboard was built using Tailwind CSS, Chart.js, and public APIs to show live movie and Formula 1 data. It is deployed via GitHub Pages with full CI/CD workflow.</p>
+      </section>
+    </div>
+
+    <div id="greeting" class="text-lg font-semibold mt-10"></div>
+    <div id="lastUpdated" class="text-sm text-gray-600 mt-1"></div>
   </div>
 
   <script>
@@ -66,6 +83,18 @@
     const greeting = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
     document.getElementById('greeting').innerText = `${greeting}, welcome to my dashboard site!`;
     document.getElementById('lastUpdated').innerText = `Last updated: ${new Date().toLocaleString()}`;
+
+    let currentIndex = 0;
+    const carousel = document.getElementById('carousel-inner');
+    const totalCards = carousel.children.length;
+
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % totalCards;
+      carousel.style.transform = `translateX(-${100 * currentIndex}%)`;
+    }, 3000);
+
+
+
   </script>
 </body>
 </html>

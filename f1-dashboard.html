@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>F1 Dashboard - Najihah R.</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -25,32 +26,35 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-beigeLight font-poppins p-6">
-  <div class="max-w-5xl mx-auto bg-white p-6 rounded shadow">
-    <h1 class="text-2xl font-bold text-maroon text-center mb-6">🏎️ F1 2025 Dashboard</h1>
+<body class="bg-beigeLight pt-12 pb-10 px-4 sm:px-6 font-poppins">
+  <div class="max-w-5xl mx-auto bg-white p-6 sm:p-8 rounded shadow">
+    <h1 class="text-2xl sm:text-3xl font-bold text-maroon text-center mb-6">🏎️ F1 2025 Dashboard</h1>
 
-    <div class="mb-4">
-      <a href="index.html" class="text-blue-600 hover:underline">← Back to Home</a>
-      <input id="searchInput" placeholder="Search driver..." class="border px-4 py-2 w-full rounded mt-2">
-      <button onclick="searchDriver()" class="bg-beigeDark text-white px-4 py-2 rounded hover:bg-beige">Search</button>
+    <div class="mb-4 flex flex-col sm:flex-row gap-2 items-center">
+      <a href="index.html" class="text-maroon hover:underline">← Back to Home</a>
+      <input id="searchInput" placeholder="Search driver..." class="border px-3 py-2 rounded w-full sm:w-auto">
+      <button onclick="searchDriver()" aria-label="Search F1 driver by name" class="bg-beigeDark text-maroon px-4 py-2 rounded hover:bg-beige transition-transform hover:scale-105">Search</button>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <div>
-        <h2 class="text-xl font-semibold mb-2 text-burgundy">Top 5 Drivers by Points (2024 Season)</h2>
+        <h2 class="text-lg sm:text-xl font-semibold mb-2 text-burgundy">Top 5 Drivers by Points (2024 Season)</h2>
         <p class="text-sm text-gray-600">* Live 2025 data not yet available. Showing latest official 2024 standings.</p>
-        <div class="bg-beige p-4 rounded-lg shadow-inner">
-          <canvas id="f1Chart"></canvas>
+        <div class="bg-beige p-4 rounded-lg shadow-inner w-full">
+        <div class="relative h-[300px] sm:h-[400px] md:h-[500px]">
+          <canvas id="f1Chart" class="absolute top-0 left-0 w-full h-full"></canvas>
         </div>
       </div>
 
+      </div>
+
       <div>
-        <h2 class="text-xl font-semibold mb-2">Top Drivers</h2>
+        <h2 class="text-lg sm:text-xl font-semibold mb-2">Top Drivers</h2>
         <label for="teamDropdown" class="block text-sm font-medium text-gray-700 mb-1">Filter by Team</label>
         <select id="teamDropdown" onchange="filterByTeam()" class="border px-4 py-2 rounded w-full mb-4">
           <option value="all">All Teams</option>
         </select>
-        <div id="driverPhotos" class="grid grid-cols-2 gap-4"></div>
+        <div id="driverPhotos" class="grid grid-cols-2 sm:grid-cols-3 gap-4"></div>
       </div>
     </div>
   </div>

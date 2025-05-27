@@ -24,13 +24,15 @@ async function getF1Standings() {
       }]
     },
     options: {
-      responsive: true,
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
+  responsive: true,
+  maintainAspectRatio: false,
+  scales: {
+    y: {
+      beginAtZero: true
     }
+  }
+}
+
   });
 
   const teams = new Set();
@@ -52,7 +54,7 @@ function renderDrivers(driverList) {
   driverList.forEach(driver => {
     const block = `
       <div class="text-center">
-        <div class="w-24 h-24 bg-beigeDark rounded-full mx-auto flex items-center justify-center font-bold text-sm">
+        <div class="w-24 aspect-square bg-beigeDark rounded-full mx-auto flex items-center justify-center font-bold text-sm transition-transform duration-300 hover:scale-105">
           ${driver.Driver.givenName[0]}${driver.Driver.familyName[0]}
         </div>
         <div class="font-semibold mt-2">${driver.Driver.givenName} ${driver.Driver.familyName}</div>
